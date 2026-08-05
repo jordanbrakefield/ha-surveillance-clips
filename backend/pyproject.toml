@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ha-surveillance-clips-backend"
+version = "0.1.0"
+description = "API service for Home Assistant surveillance clips"
+requires-python = ">=3.9"
+dependencies = [
+    "fastapi>=0.115",
+    "python-multipart>=0.0.9",
+    "sqlalchemy>=2.0",
+    "uvicorn[standard]>=0.30",
+]
+
+[tool.setuptools.packages.find]
+include = ["app*"]
