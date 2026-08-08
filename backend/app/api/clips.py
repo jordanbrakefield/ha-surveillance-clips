@@ -1,4 +1,6 @@
 from fastapi import APIRouter
+from app.config import get_clips_path
+from app.services.storage_service import StorageService
 
 router = APIRouter(
     prefix="/clips",
@@ -6,13 +8,10 @@ router = APIRouter(
 )
 
 
+storage = StorageService(get_clips_path())
+
 @router.get("/")
+
 async def get_clips():
-    return [
-        {
-            "id": 1,
-            "camera": "Front Door",
-            "timestamp": "2026-08-06T15:22:00",
-            "filename": "front-door-test.mp4"
-        }
-    ]
+
+    return storage.list_clips()
